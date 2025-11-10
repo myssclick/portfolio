@@ -1279,3 +1279,10 @@ html{
      background: linear-gradient(45deg, #ff0080, #8000ff);
      box-shadow: 0 0 15px rgba(255, 0, 128, 0.7);
 }
+
+.insta-logo {
+  width: 50px;        /* adapte la taille selon ton design */
+  height: 50px;
+  object-fit: contain; /* garde le ratio original */
+  vertical-align: middle;
+}

@@ -175,15 +175,15 @@ https://templatemo.com/tm-597-neural-glass
         // Form submission effect
         document.querySelector('.submit-btn').addEventListener('click', function(e) {
             e.preventDefault();
-            this.innerHTML = 'TRANSMITTING...';
+            this.innerHTML = 'ENVOI...';
             this.style.background = 'linear-gradient(45deg, #8000ff, #00ffff)';
             
             setTimeout(() => {
-                this.innerHTML = 'TRANSMISSION COMPLETE';
+                this.innerHTML = 'ENVOI REUSSI';
                 this.style.background = 'linear-gradient(45deg, #00ff00, #00ffff)';
                 
                 setTimeout(() => {
-                    this.innerHTML = 'TRANSMIT TO MATRIX';
+                    this.innerHTML = 'ENVOYER';
                     this.style.background = 'linear-gradient(45deg, #00ffff, #ff0080)';
                 }, 2000);
             }, 1500);
