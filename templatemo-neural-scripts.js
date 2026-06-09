@@ -1,4 +1,4 @@
-// Mobile menu functionality
+// Mobile menu
 const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
 const mobileNav = document.querySelector('.mobile-nav');
 
@@ -7,16 +7,12 @@ if (mobileMenuToggle && mobileNav) {
         mobileMenuToggle.classList.toggle('active');
         mobileNav.classList.toggle('active');
     });
-
-    // Close mobile menu when clicking on links
     document.querySelectorAll('.mobile-nav a').forEach(link => {
         link.addEventListener('click', () => {
             mobileMenuToggle.classList.remove('active');
             mobileNav.classList.remove('active');
         });
     });
-
-    // Close mobile menu when clicking outside
     document.addEventListener('click', (e) => {
         if (!mobileMenuToggle.contains(e.target) && !mobileNav.contains(e.target)) {
             mobileMenuToggle.classList.remove('active');
@@ -25,165 +21,84 @@ if (mobileMenuToggle && mobileNav) {
     });
 }
 
-// Enhanced smooth scrolling
+// Smooth scrolling
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+    anchor.addEventListener('click', function(e) {
         const targetId = this.getAttribute('href');
-
-        // Skip if href is just "#"
         if (!targetId || targetId === '#') return;
-
         const target = document.querySelector(targetId);
         if (target) {
             e.preventDefault();
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     });
 });
 
-// Enhanced header functionality
-window.addEventListener('scroll', () => {
-    const header = document.querySelector('header');
+// Single RAF-throttled scroll handler
+let scrollTicking = false;
+const header = document.querySelector('header');
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a, .mobile-nav a');
+
+function onScroll() {
     const scrolled = window.pageYOffset;
-    
-    if (!header) return;
 
-    if (scrolled > 50) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-});
+    if (header) header.classList.toggle('scrolled', scrolled > 50);
 
-// Active menu item highlighting
-function updateActiveMenuItem() {
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-links a, .mobile-nav a');
-    
     let currentSection = '';
-    const scrollPos = window.pageYOffset + 100;
-    
+    const scrollPos = scrolled + 100;
     sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        
-        if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-            currentSection = section.getAttribute('id');
+        if (scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
+            currentSection = section.id;
         }
     });
-    
     navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${currentSection}`) {
-            link.classList.add('active');
-        }
+        link.classList.toggle('active', link.getAttribute('href') === `#${currentSection}`);
     });
+
+    scrollTicking = false;
 }
 
-window.addEventListener('scroll', updateActiveMenuItem);
-window.addEventListener('load', updateActiveMenuItem);
-
-// Parallax effect for geometric shapes
 window.addEventListener('scroll', () => {
-    const shapes = document.querySelectorAll('.shape');
-    const scrolled = window.pageYOffset;
-    
-    shapes.forEach((shape, index) => {
-        const speed = (index + 1) * 0.3;
-        shape.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.1}deg)`;
-    });
-});
+    if (!scrollTicking) {
+        requestAnimationFrame(onScroll);
+        scrollTicking = true;
+    }
+}, { passive: true });
+window.addEventListener('load', onScroll);
 
-// Neural lines pulse effect
-const neuralLines = document.querySelectorAll('.neural-line');
-setInterval(() => {
-    neuralLines.forEach((line, index) => {
-        setTimeout(() => {
-            line.style.opacity = '1';
-            line.style.transform = 'scaleX(1.2)';
-            setTimeout(() => {
-                line.style.opacity = '0.2';
-                line.style.transform = 'scaleX(0.5)';
-            }, 200);
-        }, index * 300);
-    });
-}, 2000);
-
-// Enhanced particle generation
+// Lightweight particles (no box-shadow, halved frequency)
 function createQuantumParticle() {
     const particle = document.createElement('div');
-    particle.style.position = 'fixed';
-    particle.style.width = Math.random() * 4 + 1 + 'px';
-    particle.style.height = particle.style.width;
+    const size = Math.random() * 3 + 1;
     const colors = ['#00ffff', '#ff0080', '#8000ff'];
     const color = colors[Math.floor(Math.random() * colors.length)];
-    particle.style.background = color;
-    particle.style.borderRadius = '50%';
-    particle.style.left = Math.random() * 100 + '%';
-    particle.style.top = '100vh';
-    particle.style.pointerEvents = 'none';
-    particle.style.zIndex = '-1';
-    particle.style.boxShadow = `0 0 10px ${color}`;
-    
+    particle.style.cssText = `position:fixed;width:${size}px;height:${size}px;background:${color};border-radius:50%;left:${Math.random() * 100}%;top:100vh;pointer-events:none;z-index:-1;will-change:transform,opacity;`;
     document.body.appendChild(particle);
-    
-    const duration = Math.random() * 3000 + 2000;
+
     const drift = (Math.random() - 0.5) * 200;
-    
     particle.animate([
-        { transform: 'translateY(0px) translateX(0px)', opacity: 0 },
-        { transform: `translateY(-100vh) translateX(${drift}px)`, opacity: 1 }
-    ], {
-        duration: duration,
-        easing: 'ease-out'
-    }).onfinish = () => particle.remove();
+        { transform: 'translateY(0) translateX(0)', opacity: 0 },
+        { transform: `translateY(-100vh) translateX(${drift}px)`, opacity: 0.7 }
+    ], { duration: Math.random() * 3000 + 2000, easing: 'ease-out' }).onfinish = () => particle.remove();
 }
 
-// Generate quantum particles
-setInterval(createQuantumParticle, 1500);
+setInterval(createQuantumParticle, 3000);
 
-// Intersection Observer for animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
+// Scroll-in animations (unobserve after trigger to stop watching)
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.style.opacity = '1';
             entry.target.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target);
         }
     });
-}, observerOptions);
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-// Observe timeline items, hexagones et expériences
 document.querySelectorAll('.timeline-content, .hexagon, .experience-card, .skills-summary, .career-link').forEach(el => {
     el.style.opacity = '0';
-    el.style.transform = 'translateY(50px)';
-    el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+    el.style.transform = 'translateY(40px)';
+    el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
     observer.observe(el);
 });
-
-// Form submission effect
-const submitBtn = document.querySelector('.submit-btn');
-if (submitBtn) {
-    submitBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        this.innerHTML = 'ENVOI...';
-        this.style.background = 'linear-gradient(45deg, #8000ff, #00ffff)';
-        
-        setTimeout(() => {
-            this.innerHTML = 'ENVOI REUSSI';
-            this.style.background = 'linear-gradient(45deg, #00ff00, #00ffff)';
-            
-            setTimeout(() => {
-                this.innerHTML = 'ENVOYER (non fonctionnel)';
-                this.style.background = 'linear-gradient(45deg, #00ffff, #ff0080)';
-            }, 2000);
-        }, 1500);
-    });
-}

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -76,7 +76,6 @@
             <a href="https://www.linkedin.com/in/antoine-morel-esaip-ir" target="_blank" class="external-link">LinkedIn</a>
             <a href="CV_Fr.pdf" target="_blank" class="external-link">CV</a>
             <a href="https://github.com/myssclick" target="_blank" class="external-link">GitHub</a>
-            <a href="https://example.com" target="_blank" class="external-link">Contact</a>
         </div>
     </header>
 
@@ -85,6 +84,7 @@
         <div class="hero-content">
             <div class="hero-subtitle">Bienvenue dans mon Portfolio.</div>
             <h1>Antoine MOREL</h1>
+            <p class="hero-role">Étudiant Ingénieur · Informatique & Réseaux · IA</p>
 
             <div class="cta-buttons">
                 <a href="#timeline" class="cta-button">MON PARCOURS</a>
@@ -98,6 +98,44 @@
         <h2 class="section-title">COMPÉTENCES</h2>
 
         <div class="hexagon-container">
+
+            <!-- Optimisation de Portefeuille -->
+            <div class="hexagon">
+                <div class="hexagon-inner glass">
+                    <h4>
+                        <span class="hex-title" data-tooltip="- Optimisation multi-objectif : NSGA-II, front de Pareto 3D
+
+- Modèle moyenne–variance de Markowitz
+
+- Simulation Monte Carlo & analyse de robustesse
+
+- Interface Streamlit + visualisations Plotly
+
+- Python : NumPy, SciPy, DEAP">
+                            Optimisation de Portefeuille (ESAIP - 2025)
+                        </span>
+                    </h4>
+                </div>
+            </div>
+
+            <!-- Credit Scoring MLOps -->
+            <div class="hexagon">
+                <div class="hexagon-inner glass">
+                    <h4>
+                        <span class="hex-title" data-tooltip="- Machine Learning : LightGBM, XGBoost, optimisation de seuil
+
+- Explicabilité SHAP (globale & locale par client)
+
+- Suivi MLflow & model registry
+
+- Déploiement API FastAPI + conteneurisation Docker
+
+- Dashboard Streamlit pour utilisateurs non techniques">
+                            Credit Scoring & MLOps (ESAIP - 2025)
+                        </span>
+                    </h4>
+                </div>
+            </div>
 
             <!-- Café Pop -->
             <div class="hexagon">
@@ -176,6 +214,51 @@
 
             <article class="experience-card glass">
                 <div class="experience-header">
+                    <span class="experience-date">Décembre 2025</span>
+                    <span class="experience-type">Projet académique</span>
+                </div>
+                <img class="experience-card-img" src="img/banner_optim.png" alt="Front de Pareto 3D - Optimisation NSGA-II">
+                <h3>Optimisation Multi-critère de Portefeuille Financier</h3>
+                <p class="experience-text">
+                    Optimisation d’un portefeuille d’actifs boursiers sur 9 ans de données historiques (2015–2024),
+                    en combinant le modèle de Markowitz et l’algorithme évolutionnaire NSGA-II pour gérer trois objectifs
+                    simultanés : maximiser le rendement, minimiser le risque et réduire les coûts de transaction.
+                    Une interface Streamlit interactive permet d’explorer les fronts de Pareto 3D.
+                    Une simulation Monte Carlo complète l’analyse de robustesse du portefeuille sélectionné.
+                </p>
+                <ul class="experience-skills">
+                    <li>Optimisation multi-objectif : NSGA-II, front de Pareto 3D</li>
+                    <li>Modèle moyenne–variance de Markowitz</li>
+                    <li>Simulation Monte Carlo & analyse de robustesse</li>
+                    <li>Interface Streamlit + visualisations Plotly</li>
+                    <li>Python (NumPy, SciPy, DEAP)</li>
+                </ul>
+            </article>
+
+            <article class="experience-card glass">
+                <div class="experience-header">
+                    <span class="experience-date">Décembre 2025</span>
+                    <span class="experience-type">Projet académique</span>
+                </div>
+                <img class="experience-card-img" src="img/banner_credit.png" alt="Analyse SHAP - Explicabilité du modèle de crédit">
+                <h3>Outil de Credit Scoring & Démarche MLOps</h3>
+                <p class="experience-text">
+                    Développement d’un pipeline MLOps complet de credit scoring sur le dataset Home Credit Default Risk :
+                    feature engineering métier, entraînement de modèles de classification, optimisation du seuil
+                    de décision sur une métrique métier personnalisée, et déploiement via FastAPI conteneurisé avec Docker.
+                    L’explicabilité est assurée par SHAP (global & local) et toutes les expériences sont tracées avec MLflow.
+                </p>
+                <ul class="experience-skills">
+                    <li>Machine Learning : LightGBM, XGBoost, optimisation de seuil métier</li>
+                    <li>Explicabilité SHAP (importance globale & explication par client)</li>
+                    <li>Suivi MLflow & model registry (versioning, comparaison de runs)</li>
+                    <li>Déploiement API FastAPI + conteneurisation Docker</li>
+                    <li>Dashboard Streamlit pour utilisateurs non techniques</li>
+                </ul>
+            </article>
+
+            <article class="experience-card glass">
+                <div class="experience-header">
                     <span class="experience-date">Été 2025</span>
                     <span class="experience-type">Job étudiant / Stage</span>
                 </div>
@@ -231,9 +314,10 @@
         <div class="skills-summary glass">
             <h3>Synthèse des compétences développées</h3>
             <p>
-                Ces expériences, à la fois en restauration, en projet académique et en engagement bénévole,
-                m’ont permis de développer un socle de compétences transversales très utiles pour mon parcours
-                d’ingénieur en informatique et réseaux.
+                Ces expériences, en optimisation mathématique, en machine learning et MLOps, en développement web,
+                en restauration et en engagement bénévole, m’ont permis de construire un socle de compétences
+                à la fois techniques et transversales, utiles à chaque étape de mon parcours d’ingénieur en
+                informatique, réseaux et intelligence artificielle.
             </p>
             <div class="skills-summary-grid">
                 <div class="skills-column">
@@ -248,10 +332,12 @@
                 <div class="skills-column">
                     <h4>Compétences techniques</h4>
                     <ul>
-                        <li>Développement et structuration d’un site web</li>
+                        <li>Machine Learning & MLOps (LightGBM, XGBoost, MLflow, Docker, FastAPI)</li>
+                        <li>Optimisation multi-objectif et algorithmes évolutionnaires (NSGA-II, DEAP)</li>
+                        <li>Explicabilité de modèles IA (SHAP global & local)</li>
+                        <li>Développement web et structuration de contenu</li>
                         <li>Approche projet (objectifs, planning, livrables)</li>
-                        <li>Culture informatique renforcée par l’ERASMUS</li>
-                        <li>Capacité à vulgariser des notions techniques</li>
+                        <li>Culture informatique internationale (ERASMUS)</li>
                     </ul>
                 </div>
             </div>
@@ -260,22 +346,32 @@
         <div class="career-link glass">
             <h3>En lien avec mon projet professionnel</h3>
             <p>
-                Mon objectif est de travailler comme ingénieur en informatique et réseaux, avec une forte sensibilité
-                pour l’intelligence artificielle et les environnements cloud. Le travail en cuisine au Café Pop m’a appris
-                à gérer la pression, à être fiable et à collaborer efficacement au sein d’une équipe, des qualités
-                essentielles dans un contexte de production informatique.
+                Mon objectif est de travailler comme ingénieur en informatique et réseaux, avec une forte spécialisation
+                en intelligence artificielle et en ingénierie des données. Les deux projets académiques de décembre 2025
+                s’inscrivent directement dans cette trajectoire : le projet de credit scoring m’a permis de construire
+                un pipeline MLOps de bout en bout — de la donnée brute au déploiement conteneurisé — en mobilisant
+                des outils du monde professionnel (MLflow, FastAPI, Docker, SHAP), tandis que le projet d’optimisation
+                de portefeuille m’a confronté à la résolution de problèmes d’optimisation complexes à plusieurs objectifs,
+                domaine central en recherche opérationnelle et en systèmes décisionnels.
             </p>
             <p>
-                Le projet “ERASMUS life in Budapest” et mon semestre à l’étranger renforcent ma capacité à évoluer dans
-                des environnements techniques internationaux, à m’adapter à de nouveaux outils et à communiquer en anglais
-                avec des profils variés. Enfin, le tutorat bénévole illustre ma capacité à expliquer clairement des notions
-                complexes, qualité indispensable pour travailler avec des équipes pluridisciplinaires, former des utilisateurs
-                ou vulgariser des technologies comme l’IA.
+                Ces deux projets illustrent également ma capacité à produire des livrables complets et documentés :
+                rapports techniques structurés, interfaces utilisateur (Streamlit), API REST et visualisations avancées
+                (Plotly, SHAP). Ils renforcent ma maîtrise de Python comme outil d’ingénierie à part entière,
+                au-delà du simple scripting.
             </p>
             <p>
-                L’ensemble de ces expériences alimente une posture professionnelle tournée vers la collaboration, la
-                pédagogie, l’adaptabilité et la rigueur, en cohérence avec les attentes du métier d’ingénieur en informatique
-                et réseaux spécialisé en intelligence artificielle.
+                Le travail en cuisine au Café Pop m’a appris à gérer la pression, à être fiable et à collaborer
+                efficacement — des qualités directement transposables en contexte de production informatique et
+                dans les équipes agiles. Le projet ERASMUS et mon semestre à Budapest renforcent ma capacité à
+                évoluer dans des environnements techniques internationaux et à communiquer en anglais avec des
+                profils variés. Enfin, le tutorat bénévole illustre ma capacité à expliquer clairement des notions
+                complexes, qualité indispensable pour travailler avec des équipes pluridisciplinaires ou vulgariser
+                des technologies comme l’IA auprès d’utilisateurs non techniques.
+            </p>
+            <p>
+                L’ensemble de ces expériences alimente une posture professionnelle tournée vers la rigueur technique,
+                la collaboration et la pédagogie — en cohérence avec les attentes du métier d’ingénieur IA/Data.
             </p>
         </div>
     </section>
@@ -325,7 +421,7 @@
         </div>
     </section>
     <footer>
-        <p>&copy; 2025 Antoine MOREL</p>
+        <p>&copy; 2026 Antoine MOREL</p>
     </footer>
 
     <script src="templatemo-neural-scripts.js"></script>
