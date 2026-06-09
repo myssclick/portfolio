@@ -83,7 +83,7 @@ function createQuantumParticle() {
     ], { duration: Math.random() * 3000 + 2000, easing: 'ease-out' }).onfinish = () => particle.remove();
 }
 
-setInterval(createQuantumParticle, 3000);
+setInterval(createQuantumParticle, 8000);
 
 // Scroll-in animations (unobserve after trigger to stop watching)
 const observer = new IntersectionObserver(entries => {
